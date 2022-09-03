@@ -1,0 +1,81 @@
+
+def hay_incompatible(prenda, lavado_actual, incompatibles):
+    for k in lavado_actual:
+        # Si la prenda del lavado actual esta en la lista de incompatibles de la prenda comparacion y viceversa, hay incompatibilidad
+        if k in incompatibles[prenda] or prenda in incompatibles[k]:
+            return True
+    return False
+
+
+def escribir_solucion(archivo, lavados):
+    lineas = []
+
+    for key, value in lavados.items():
+        for i in value:
+            lineas.append(i + " " + str(key) + "\n")
+    archivo.writelines((lineas))
+
+
+
+infoEnunciado = open('problema.txt', 'r')
+solucion = open('solucion.txt', 'w')
+
+# Declaro las variables que voy a necesitar, uso Sets que contienen listas adentro
+cant_prendas = 0
+incompatibles = {}
+t_lavado = {}
+
+for linea in infoEnunciado.readlines():
+    linea = linea[:-1].split(' ')
+
+    if linea[0] == 'c':
+        continue
+
+    elif linea[0] == 'p':
+        cant_prendas = linea[2]
+
+    elif linea[0] == 'e':
+        # Veo si el primer incompatible ya fue registrado
+        if linea[1] in incompatibles:
+            # Como ya esta, en la lista de esa prenda agrego la nueva prenda con la que es incompatible
+            incompatibles[linea[1]].append(linea[2])
+        else:
+            # Si no esta, en la ubic de la primer prenda creo una lista que contenga a su nueva prenda incompatible
+            incompatibles[linea[1]] = [linea[2]]
+
+        # Repito la misma logica pero con el segundo incompatible de la lista
+        if linea[2] in incompatibles:
+            incompatibles[linea[2]].append(linea[1])
+
+        else:
+            incompatibles[linea[2]] = [linea[1]]
+
+    # Guardo el tiempo de lavado correspondiente a cada prenda
+    elif linea[0] == 'n':
+        t_lavado[linea[1]] = int(linea[2])
+
+
+tiempos_lav = list(t_lavado)
+
+# Armo los lavados
+lavado = {}
+
+i=1
+while(len(tiempos_lav) != 0):
+    lavado[i] = [tiempos_lav[0]]
+    tiempos_lav.pop(0)
+    
+    for prenda in tiempos_lav:
+        if not hay_incompatible(prenda, lavado[i], incompatibles):
+            lavado[i].append(prenda)
+            tiempos_lav.remove(prenda)
+
+    i += 1
+
+
+# Escribo los lavados en el doc solucion
+escribir_solucion(solucion, lavado)
+
+
+infoEnunciado.close()
+solucion.close()
