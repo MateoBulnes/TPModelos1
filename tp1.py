@@ -6,6 +6,22 @@ def hay_incompatible(prenda, lavado_actual, incompatibles):
             return True
     return False
 
+def crear_lavado(tiempos_lavado, lista_incompatibles):
+    lavados = {}
+
+    i=1
+    while(len(tiempos_lavado) != 0):
+        lavados[i] = [tiempos_lavado[0]]
+        tiempos_lavado.pop(0)
+    
+        for prenda in tiempos_lavado:
+            if not hay_incompatible(prenda, lavados[i], lista_incompatibles):
+                lavados[i].append(prenda)
+                tiempos_lavado.remove(prenda)
+
+        i += 1
+
+    return lavados
 
 def escribir_solucion(archivo, lavados):
     lineas = []
@@ -58,23 +74,10 @@ for linea in infoEnunciado.readlines():
 tiempos_lav = list(t_lavado)
 
 # Armo los lavados
-lavado = {}
-
-i=1
-while(len(tiempos_lav) != 0):
-    lavado[i] = [tiempos_lav[0]]
-    tiempos_lav.pop(0)
-    
-    for prenda in tiempos_lav:
-        if not hay_incompatible(prenda, lavado[i], incompatibles):
-            lavado[i].append(prenda)
-            tiempos_lav.remove(prenda)
-
-    i += 1
-
+lavados_final = crear_lavado(tiempos_lav, incompatibles)
 
 # Escribo los lavados en el doc solucion
-escribir_solucion(solucion, lavado)
+escribir_solucion(solucion, lavados_final)
 
 
 infoEnunciado.close()
