@@ -1,7 +1,11 @@
 A priori me parecia un problema sencillo de modelar ya que con tal de que no se incluyan prendas incompatibles en los lavados alcanza para resolver el problema. Sin embargo se volvio mas complejo 
 una vez que empece a pensar como emparejar las prendas para obtener un mejor resultado
-Para resolverlo itero sobre los tiempos de lavado de las prendas tomando la primer prenda y comparandola con el resto agregando las compatibles al lavado. Como las prendas elegidas se van eliminando 
-de la lista, te terminan quedando las prendas distribuidas en los lavados correspondientes
+
+Pasos para la resolución: 
+    - Leo el archivo de problema y guardo por un lado los tiempos de lavado de cada prenda y por otro guardo cada prenda con su lista de prendas incompatibles
+    - Armo los lavados iterando sobre los tiempos de lavado: Uso la primer prenda de la lista, luego iterando sobre los tiempos nuevamente me voy fijando si las prendas son o no compatibles con la prenda elegida al principio de la iteración, 
+      en caso de se compatibles agrego la prenda al lavado y la saco de la lista para que no se repita. Continuo iterando hasta que todas las prendas quedaron en la lista de lavados
+    - Escribo en un archivo de solución los lavados obtenidos
 
 Como primera solución me parece correcta en el sentido que resuelve el ejercicio, pero no considero que sea la mejor solución posible ya que hay casos donde arma lavados de prendas que toman mucho tiempo en 
-lavar con prendas de poco tiempo. La resolución ideal seria separar las prendas segun su tiempo de lavado asi te quedan que mas tiempo llevan en un mismo lavado y se reducen los costos
+lavar con prendas de poco tiempo. La resolución ideal seria separar las prendas segun su tiempo de lavado asi te quedan las que mas tiempo llevan en un mismo lavado y se reducen los costos
