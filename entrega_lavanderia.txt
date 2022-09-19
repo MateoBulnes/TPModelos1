@@ -1,3 +1,5 @@
+*Primera entrega:
+
 A priori me parecia un problema sencillo de modelar ya que con tal de que no se incluyan prendas incompatibles en los lavados alcanza para resolver el problema. Sin embargo se volvio mas complejo 
 una vez que empece a pensar como emparejar las prendas para obtener un mejor resultado
 
@@ -9,3 +11,7 @@ Pasos para la resolución:
 
 Como primera solución me parece correcta en el sentido que resuelve el ejercicio, pero no considero que sea la mejor solución posible ya que hay casos donde arma lavados de prendas que toman mucho tiempo en 
 lavar con prendas de poco tiempo. La resolución ideal seria separar las prendas segun su tiempo de lavado asi te quedan las que mas tiempo llevan en un mismo lavado y se reducen los costos
+
+*Segunda entrega:
+
+Como primer intento a mejorar el algoritmo, ordeno los tiempos de lavado segun cuanto tardan, de esta forma espero reducir los tiempos ya que ya se tienen las prendas ordenadas por tiempo.

@@ -1,3 +1,4 @@
+import operator
 
 def hay_incompatible(prenda, lavado_actual, incompatibles):
     for k in lavado_actual:
@@ -31,7 +32,12 @@ def escribir_solucion(archivo, lavados):
             lineas.append(i + " " + str(key) + "\n")
     archivo.writelines((lineas))
 
-
+def ordenar_tiempos_lavado(tiempos):
+    tiempos_ordenados = sorted(tiempos.items(), key = operator.itemgetter(1))
+    prendas_ord_segun_tiempo = []
+    for t in tiempos_ordenados:
+        prendas_ord_segun_tiempo.append(t[0])
+    return prendas_ord_segun_tiempo
 
 infoEnunciado = open('problema.txt', 'r')
 solucion = open('solucion.txt', 'w')
@@ -71,10 +77,11 @@ for linea in infoEnunciado.readlines():
         t_lavado[linea[1]] = int(linea[2])
 
 
-tiempos_lav = list(t_lavado)
+#Ordeno los tiempos de lavado
+t_lavado_ordenado = ordenar_tiempos_lavado(t_lavado)
 
 # Armo los lavados
-lavados_final = crear_lavado(tiempos_lav, incompatibles)
+lavados_final = crear_lavado(t_lavado_ordenado, incompatibles)
 
 # Escribo los lavados en el doc solucion
 escribir_solucion(solucion, lavados_final)
