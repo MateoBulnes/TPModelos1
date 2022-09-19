@@ -39,7 +39,7 @@ def ordenar_tiempos_lavado(tiempos):
         prendas_ord_segun_tiempo.append(t[0])
     return prendas_ord_segun_tiempo
 
-infoEnunciado = open('problema.txt', 'r')
+infoEnunciado = open('segundo_problema.txt', 'r')
 solucion = open('solucion.txt', 'w')
 
 # Declaro las variables que voy a necesitar, uso Sets que contienen listas adentro
