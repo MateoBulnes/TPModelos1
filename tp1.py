@@ -33,11 +33,12 @@ def escribir_solucion(archivo, lavados):
     archivo.writelines((lineas))
 
 def ordenar_tiempos_lavado(tiempos):
-    tiempos_ordenados = sorted(tiempos.items(), key = operator.itemgetter(1))
+    tiempos_ordenados = sorted(tiempos.items(), key = operator.itemgetter(1), reverse=True)
     prendas_ord_segun_tiempo = []
     for t in tiempos_ordenados:
         prendas_ord_segun_tiempo.append(t[0])
     return prendas_ord_segun_tiempo
+
 
 infoEnunciado = open('segundo_problema.txt', 'r')
 solucion = open('solucion.txt', 'w')
