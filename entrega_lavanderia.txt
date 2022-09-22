@@ -14,4 +14,5 @@ lavar con prendas de poco tiempo. La resolución ideal seria separar las prendas
 
 *Segunda entrega:
 
-Como primer intento a mejorar el algoritmo, ordeno los tiempos de lavado segun cuanto tardan, de esta forma espero reducir los tiempos ya que ya se tienen las prendas ordenadas por tiempo.
+Como primer intento a mejorar el algoritmo, ordeno los tiempos de lavado en orden ascendente segun cuanto tardan, de esta forma espero reducir los tiempos ya que ya se tienen las prendas ordenadas por tiempo.
+En el primer intento se obtuvo un tiempo de 779 ordenando ascendentemente, luego observo que si ordeno los tiempos de lavado descendentemente se obtiene una mejora significativa en el tiempo.
