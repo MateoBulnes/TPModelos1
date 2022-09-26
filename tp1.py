@@ -12,8 +12,7 @@ def crear_lavado(tiempos_lavado, lista_incompatibles):
 
     i=1
     while(len(tiempos_lavado) != 0):
-        medio = round(len(tiempos_lavado)/2)
-        lavados[i] = [tiempos_lavado[medio]]
+        lavados[i] = [tiempos_lavado[0]]
         tiempos_lavado.pop(0)
     
         for prenda in tiempos_lavado:
