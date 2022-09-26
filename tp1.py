@@ -40,9 +40,9 @@ def ordenar_tiempos_lavado(tiempos):
         prendas_ord_segun_tiempo.append(t[0])
     return prendas_ord_segun_tiempo
 
-def eliminar_repetidos(incompatibles):
-    for prenda in incompatibles:
-        incompatibles[prenda] = list(dict.fromkeys(incompatibles[prenda]))
+def eliminar_repetidos(dict):
+    for elem in dict:
+        dict[elem] = list(dict.fromkeys(dict[elem]))
 
 infoEnunciado = open('segundo_problema.txt', 'r')
 solucion = open('solucion.txt', 'w')
@@ -89,6 +89,7 @@ t_lavado_ordenado = ordenar_tiempos_lavado(t_lavado)
 
 # Armo los lavados
 lavados_final = crear_lavado(t_lavado_ordenado, incompatibles)
+eliminar_repetidos(lavados_final)
 
 # Escribo los lavados en el doc solucion
 escribir_solucion(solucion, lavados_final)
