@@ -12,7 +12,8 @@ def crear_lavado(tiempos_lavado, lista_incompatibles):
 
     i=1
     while(len(tiempos_lavado) != 0):
-        lavados[i] = [tiempos_lavado[0]]
+        medio = round(len(tiempos_lavado)/2)
+        lavados[i] = [tiempos_lavado[medio]]
         tiempos_lavado.pop(0)
     
         for prenda in tiempos_lavado:
@@ -39,6 +40,9 @@ def ordenar_tiempos_lavado(tiempos):
         prendas_ord_segun_tiempo.append(t[0])
     return prendas_ord_segun_tiempo
 
+def eliminar_repetidos(incompatibles):
+    for prenda in incompatibles:
+        incompatibles[prenda] = list(dict.fromkeys(incompatibles[prenda]))
 
 infoEnunciado = open('segundo_problema.txt', 'r')
 solucion = open('solucion.txt', 'w')
@@ -77,6 +81,8 @@ for linea in infoEnunciado.readlines():
     elif linea[0] == 'n':
         t_lavado[linea[1]] = int(linea[2])
 
+#Elimino los elementos repetidos en la lista de incompatibles de cada prenda
+eliminar_repetidos(incompatibles)
 
 #Ordeno los tiempos de lavado
 t_lavado_ordenado = ordenar_tiempos_lavado(t_lavado)

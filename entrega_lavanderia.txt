@@ -16,3 +16,7 @@ lavar con prendas de poco tiempo. La resolución ideal seria separar las prendas
 
 Como primer intento a mejorar el algoritmo, ordeno los tiempos de lavado en orden ascendente segun cuanto tardan, de esta forma espero reducir los tiempos ya que ya se tienen las prendas ordenadas por tiempo.
 En el primer intento se obtuvo un tiempo de 779 ordenando ascendentemente, luego observo que si ordeno los tiempos de lavado descendentemente se obtiene una mejora significativa en el tiempo.
+
+Investigando encontre que existe una mejora en el algoritmo greedy para resolver problema de coloreo que plantea comenzar por el elemento en la mitad de la lista de nodos para colorear.
+Siguiendo este ejemplo cambie el algoritmo para que en lugar de comenzar por el primer elemento de la lista de tiempos de lavado, comience siempre por el nodo de la mitad. 
+Observo que de esta forma se obtiene una menor cantidad de lavados por lo que debería mejorar el resultado
